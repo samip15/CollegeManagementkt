@@ -31,14 +31,17 @@ class MainActivity : AppCompatActivity() {
         //Event
         btnAdd.setOnClickListener  {
             try {
-                val person = Person(
+                if (editName.text.toString().isEmpty() || editEmail.text.toString().isEmpty() || editId.text.toString().isEmpty()){
+                    Toast.makeText(this, "Enter Id,Email Or Name", Toast.LENGTH_SHORT).show()
+                }else{
+                    val person = Person(
                         Integer.parseInt(editId.text.toString()),
                         editName.text.toString(),
                         editEmail.text.toString()
                     )
                     dbHelper.addPerson(person)
                     refreshData()
-
+                }
 
             }catch (ex: NumberFormatException){
                 Toast.makeText(this, "Enter Some Text Value", Toast.LENGTH_SHORT).show()
@@ -46,13 +49,18 @@ class MainActivity : AppCompatActivity() {
         }
       btnUpdate.setOnClickListener{
           try {
-              val person = Person(
+              if (editName.text.toString().isEmpty() || editEmail.text.toString().isEmpty() || editId.text.toString().isEmpty()){
+                  Toast.makeText(this, "Enter Id,Email Or Name", Toast.LENGTH_SHORT).show()
+              }else{
+                  val person = Person(
                       Integer.parseInt(editId.text.toString()),
                       editName.text.toString(),
                       editEmail.text.toString()
                   )
                   dbHelper.updatePerson(person)
                   refreshData()
+              }
+
           }catch (ex: NumberFormatException){
               Toast.makeText(this, "Enter Some Text Value", Toast.LENGTH_SHORT).show()
           }
@@ -60,13 +68,18 @@ class MainActivity : AppCompatActivity() {
       }
         btnDelete.setOnClickListener{
             try {
-                val person = Person(
+                if (editName.text.toString().isEmpty() || editEmail.text.toString().isEmpty() || editId.text.toString().isEmpty()){
+                    Toast.makeText(this, "Enter Id,Email Or Name", Toast.LENGTH_SHORT).show()
+                }else{
+                    val person = Person(
                         Integer.parseInt(editId.text.toString()),
                         editName.text.toString(),
                         editEmail.text.toString()
                     )
                     dbHelper.deletePerson(person)
                     refreshData()
+                }
+
 
             }catch (ex: NumberFormatException){
                 Toast.makeText(this, "Enter Some Text Value", Toast.LENGTH_SHORT).show()
