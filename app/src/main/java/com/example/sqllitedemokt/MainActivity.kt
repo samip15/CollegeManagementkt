@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
+import android.widget.Toast
 import com.example.sqllitedemokt.Adapter.ListViewAdapter
 import com.example.sqllitedemokt.Model.Person
+import java.lang.NumberFormatException
 
 class MainActivity : AppCompatActivity() {
     lateinit var editId: EditText
@@ -27,32 +29,49 @@ class MainActivity : AppCompatActivity() {
         dbHelper = DBHelper(this)
         refreshData()
         //Event
-        btnAdd.setOnClickListener {
-            val person = Person(
-                Integer.parseInt(editId.text.toString()),
-                editName.text.toString(),
-                editEmail.text.toString()
-            )
-            dbHelper.addPerson(person)
-            refreshData()
+        btnAdd.setOnClickListener  {
+            try {
+                val person = Person(
+                        Integer.parseInt(editId.text.toString()),
+                        editName.text.toString(),
+                        editEmail.text.toString()
+                    )
+                    dbHelper.addPerson(person)
+                    refreshData()
+
+
+            }catch (ex: NumberFormatException){
+                Toast.makeText(this, "Enter Some Text Value", Toast.LENGTH_SHORT).show()
+            }
         }
       btnUpdate.setOnClickListener{
-          val person = Person(
-              Integer.parseInt(editId.text.toString()),
-              editName.text.toString(),
-              editEmail.text.toString()
-          )
-          dbHelper.updatePerson(person)
-          refreshData()
+          try {
+              val person = Person(
+                      Integer.parseInt(editId.text.toString()),
+                      editName.text.toString(),
+                      editEmail.text.toString()
+                  )
+                  dbHelper.updatePerson(person)
+                  refreshData()
+          }catch (ex: NumberFormatException){
+              Toast.makeText(this, "Enter Some Text Value", Toast.LENGTH_SHORT).show()
+          }
+
       }
         btnDelete.setOnClickListener{
-            val person = Person(
-                Integer.parseInt(editId.text.toString()),
-                editName.text.toString(),
-                editEmail.text.toString()
-            )
-            dbHelper.deletePerson(person)
-            refreshData()
+            try {
+                val person = Person(
+                        Integer.parseInt(editId.text.toString()),
+                        editName.text.toString(),
+                        editEmail.text.toString()
+                    )
+                    dbHelper.deletePerson(person)
+                    refreshData()
+
+            }catch (ex: NumberFormatException){
+                Toast.makeText(this, "Enter Some Text Value", Toast.LENGTH_SHORT).show()
+            }
+
         }
     }
 

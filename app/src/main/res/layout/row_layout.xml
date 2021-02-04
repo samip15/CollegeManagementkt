@@ -20,13 +20,16 @@
         android:orientation="horizontal">
 
         <TextView
+            android:textAlignment="center"
             android:id="@+id/txt_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Eddy"/>
+            android:text="Eddy"
+            android:gravity="center_horizontal" />
 
         <TextView
+            android:textAlignment="center"
             android:id="@+id/txt_email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
